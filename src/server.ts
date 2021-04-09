@@ -1,11 +1,16 @@
 import express from 'express';
+import dotenv from  'dotenv';
+import mysql from './config/mysql';
+import router from './routes';
+
+dotenv.config();
+const connection = new mysql();
+
+
+
 const app = express();
 
-app.get('/',(rec,res) => {
-    res.json({
-        message: 'olá mundo'
-    });
-});
+app.use(router);
 
 
 app.listen(3000);
